@@ -1,0 +1,63 @@
+.menu {
+    margin-top: 48px;
+
+    h1 {
+        color: #000;
+        font-feature-settings: 'clig' off, 'liga' off;
+        font-family: Podkova;
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+
+    .sortingCoffee {
+        display: flex;
+        margin-top: 24px;
+
+        //justify-content: space-between;
+        .sortingCoffee_firstHalf {
+
+            margin-right: 32px;
+            color: var(--color-black, #191919);
+            font-feature-settings: 'clig' off, 'liga' off;
+            font-family: Podkova;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+
+        .sortingCoffee_items {
+            display: flex;
+            gap: 24px;
+
+            .sortingCoffee_item {
+                height: 27px;
+                cursor: pointer;
+                overflow: hidden;
+
+                outline: none;
+                /* Для синий ободки */
+                border: 0;
+                background: none;
+                transition: all 0.5s;
+                font-feature-settings: 'clig' off, 'liga' off;
+                font-family: Podkova;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+
+                &:hover {
+                    color: var(--color-primary-green, #377F50);
+                }
+            }
+        }
+    }
+}
+
+
+
+
+

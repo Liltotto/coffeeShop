@@ -1,0 +1,60 @@
+.banner {
+    margin-top: 16px;
+    //position: relative;
+    width: 100%;
+    //margin: 0 auto;
+    height: 530px;
+    background: url('~/public/assets/img/Banner.png') center center / cover no-repeat;
+    padding: 80px;
+    display: flex;
+    align-items: center;
+
+    .textAndButton {
+        height: 222px;
+        width: 565px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .textBanner {
+            color: #000;
+            font-feature-settings: 'clig' off, 'liga' off;
+            font-family: Podkova;
+            font-size: 64px;
+            font-style: normal;
+            font-weight: 800;
+            line-height: normal;
+        }
+
+        .buttonBanner {
+
+            display: flex;
+            width: 242px;
+            height: 48px;
+            padding: 10px 16px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            border-radius: 8px;
+            border: 1px solid #000;
+            cursor: pointer;
+            color: #000;
+            text-align: center;
+            font-family: Podkova;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+
+            &:hover {
+                transition: all 0.5s ;
+                background: black;
+                color: white;
+                //box-shadow: inset 0 0 0 3px #3a7999;
+            }
+
+            
+        }
+
+    }
+}

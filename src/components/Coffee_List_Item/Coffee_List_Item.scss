@@ -1,0 +1,113 @@
+.coffeeListItem {
+    width: 331px;
+    border-radius: 12px;
+    border: 2px solid var(--color-light-gray, #F3F3F3);
+
+    .coffeeListItem_firstHalf {
+        border-radius: 12px 12px 0 0;
+        width: 329px;
+        height: 237px;
+        margin: 0 auto;
+        background: url('~/public/assets/img/menuCoffee/KaramelAmericano.png'), #F3F3F3 50% / cover no-repeat;
+        padding: 17px;
+
+        .heart {
+            margin-left: auto;
+            border-radius: 8px;
+            border: 0;
+            background: var(--color-white, #FFF);
+            display: flex;
+            width: 36px;
+            height: 36px;
+            padding: 6px;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+            .heartIcon {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    }
+
+    .coffeeListItem_secondHalf {
+        padding: 24px;
+
+        .price {
+            color: var(--color-black, #191919);
+            font-feature-settings: 'clig' off, 'liga' off;
+            font-family: Podkova;
+            font-size: 32px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+
+        .name {
+            margin-top: 8px;
+            height: 27px;
+            overflow: hidden;
+            color: var(--color-black, #191919);
+            font-feature-settings: 'clig' off, 'liga' off;
+            font-family: Podkova;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .description {
+            margin-top: 4px;
+            height: 52px;
+            overflow: hidden;
+            color: var(--color-dark-gray, #505050);
+            font-feature-settings: 'clig' off, 'liga' off;
+            font-family: Podkova;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 120%;
+            -webkit-line-clamp: 2;
+            //white-space: nowrap;
+            margin: 0;
+            /* Убираем внешний отступ */
+            -webkit-line-clamp: 2;
+            /* Число отображаемых строк */
+            display: -webkit-box;
+            /* Включаем флексбоксы */
+            -webkit-box-orient: vertical;
+        }
+
+        .volumeButtonsWrapper {
+            margin-top: 16px;
+            display: flex;
+            gap: 12px;
+            justify-content: space-between;
+
+            .volumeButton {
+
+                color: var(--color-black, #191919);
+                text-align: center;
+                font-feature-settings: 'clig' off, 'liga' off;
+                font-family: Podkova;
+                font-size: 17px;
+                // !!!!! НЕ ЗАБЫТЬ ПОТОМ ПОМЕНЯТЬ РАЗМЕР ШРИФТА КОГДА ДОБАВЛЮ ШРИФТЫ !!!!!
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+
+                cursor: pointer;
+                width: 86px;
+                height: 51px;
+                padding: 16px 17px;
+
+                border-radius: 8px;
+                border: 0;
+                background: #F3F3F3;
+            }
+        }
+    }
+}
