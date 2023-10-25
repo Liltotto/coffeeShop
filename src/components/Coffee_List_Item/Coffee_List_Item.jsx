@@ -5,7 +5,7 @@ import heart from '@assets/icons/heart.svg';
 
 import './Coffee_List_Item.scss';
 
-const CoffeeListItem = (props) => {
+const CoffeeListItem = ({price, name, description, volumeButtons, handlerClickVolume, itemId}) => {
 
     // const [coffeeListItem_secondHalfData, setCoffeeListItem_secondHalfData] = useState([
     //     {price: 275, name: 'Песочный Карамель Американо', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [200, 400, 600]},
@@ -13,15 +13,26 @@ const CoffeeListItem = (props) => {
     //     {price: 275, name: 'Песочный Карамель Американо', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [200, 400, 600]}, 
     // ]);
 
-    const {price, name, description, volumeButtons} = props.data
+    // const {price, name, description, volumeButtons} = props.data
 
-    
+    const handlerClick = (volumeButton) => {
+        handlerClickVolume(itemId, volumeButton.volume)
+    }
 
     const coffeeListItem_secondHalf = (price, name, description, volumeButtons) => {
 
         const volumeButtonsArr = volumeButtons.map((item) => {
-            return  <button className="volumeButton">
-                        {item} мл
+
+            const classVolumeButton = item.active ? 'volumeButton active' : 'volumeButton'
+            console.log(classVolumeButton);
+            console.log(item.active);
+            return  <button 
+                        type="button"
+                        key={item.volume} 
+                        className={classVolumeButton}
+                        onClick={() => handlerClick(item)}
+                        >
+                            {item.volume} мл
                     </button>
         })
 
