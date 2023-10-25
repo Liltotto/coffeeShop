@@ -1,5 +1,8 @@
 
 import { useState } from 'react';
+
+import UG from '@assets/logo/UG.svg'
+
 import './Header.scss'
 
 const Header = () => {
@@ -10,7 +13,7 @@ const Header = () => {
 
     return (
         <div className='header'>
-            <img src="assets/logo/UG.svg" alt="UG" />
+            <img src={UG} alt="UG" />
             
             {/* <div className="heartAndBasket">
                 <div className="heart">

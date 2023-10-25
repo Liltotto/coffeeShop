@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+      "allowSyntheticDefaultImports":false,
+      "baseUrl": "./",
+      "paths": {
+        "@components/*": ["src/components/*"],
+        "@components": ["src/components"],
+        "@assets/*": ["src/assets/*"],
+        "@assets": ["src/assets"],
+        "@scss/*": ["src/scss/*"],
+        "@scss": ["src/scss"]
+      }
+    },
+    "exclude": ["node_modules"]
+  }

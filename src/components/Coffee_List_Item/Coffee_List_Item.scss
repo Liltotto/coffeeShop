@@ -8,7 +8,7 @@
         width: 329px;
         height: 237px;
         margin: 0 auto;
-        background: url('~/public/assets/img/menuCoffee/KaramelAmericano.png'), #F3F3F3 50% / cover no-repeat;
+        background: url('~@assets/img/menuCoffee/KaramelAmericano.png'), #F3F3F3 50% / cover no-repeat;
         padding: 17px;
 
         .heart {
@@ -27,6 +27,11 @@
             .heartIcon {
                 width: 24px;
                 height: 24px;
+            }
+
+            &:hover {
+                transition: all 0.3s;
+                background: rgba(#c0bfbf, 0.8);
             }
         }
     }
@@ -106,7 +111,21 @@
                 border-radius: 8px;
                 border: 0;
                 background: #F3F3F3;
+                transition: all 0.3s;
+                
+                &.active {
+                    background: #ffffff;
+                    border: 1px solid var(--color-primary-green, #377F50);
+
+                }
+
+                &:hover {
+                    
+                    background: rgba(#c0bfbf, 0.8);
+                }
             }
+
+
         }
     }
 }
