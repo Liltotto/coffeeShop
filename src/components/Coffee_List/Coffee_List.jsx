@@ -19,7 +19,6 @@ const CoffeeList = ({coffeeListItem_secondHalfData}) => {
         <div className='coffeeList'>
             {coffeeListItem_secondHalf}
         </div>
-        
     );
 };
 
