@@ -1,7 +1,8 @@
 
 import { useState } from 'react';
 
-import UG from '@assets/logo/UG.svg'
+import UGandDot from '@assets/logo/UGandDot.png'
+
 
 import './Header.scss'
 
@@ -13,13 +14,21 @@ const Header = () => {
 
     return (
         <div className='header'>
-            <img src={UG} alt="UG" />
+            
+			<img src={UGandDot} alt="UGlogo" />
+
+			{/* <div className="logo">
+				<img src={UG} alt="UG" />
+				<img src={dot} alt="dot" />
+			</div>
+             */}
             
             {/* <div className="heartAndBasket">
                 <div className="heart">
                     <img src="assets/icons/heart.svg" alt="heart" />
                 </div> */}
             <input className="searchInput" type="text" placeholder='Поиск'/>
+
 
             <button className="basketButton">
                 <div className="basket_icon"></div>
@@ -28,6 +37,7 @@ const Header = () => {
                 <div>{basketCount}</div>
             </button>
             
+            <div className="bottom_line"></div> 
         </div>
     );
 };

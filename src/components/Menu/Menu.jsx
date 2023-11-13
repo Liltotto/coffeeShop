@@ -17,26 +17,54 @@ const Menu = () => {
     //     {price: 275, name: 'Песочный Карамель Американо', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [200, 400, 600]}, 
     // ]);
 
-    const [coffeeListItem_secondHalfData, setCoffeeListItem_secondHalfData] = useState([
-        {price: 275, name: 'Песочный Карамель Американо', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [{volume: 200, active: false}, {volume: 400, active: false}, {volume: 600, active: false}], id: 1},
-        {price: 2, name: 'Песочный Карамель', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [{volume: 200, active: false}, {volume: 400, active: false}, {volume: 600, active: false}], id: 2},
-        {price: 27, name: 'Песочный', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [{volume: 200, active: false}, {volume: 400, active: false}, {volume: 600, active: false}], id: 3},
-        {price: 11, name: 'Песоч', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [{volume: 200, active: false}, {volume: 400, active: false}, {volume: 600, active: false}], id: 4}, 
+    const [coffeeListItem, setCoffeeListItem] = useState([
+        {price: 275, name: 'Песочный Карамель Американо', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [{volume: 200, active: false}, {volume: 400, active: false}, {volume: 600, active: false}], activeHeart: false, date: new Date(2016, 18, 28), id: 1},
+        {price: 2, name: 'Песочный Карамель', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [{volume: 200, active: false}, {volume: 400, active: false}, {volume: 600, active: false}], activeHeart: false, date: new Date(2016, 5, 28), id: 2},
+        {price: 27, name: 'Песочный', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [{volume: 200, active: false}, {volume: 400, active: false}, {volume: 600, active: false}], activeHeart: false, date: new Date(2016, 2, 28), id: 3},
+        {price: 11, name: 'Песоч', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [{volume: 200, active: false}, {volume: 400, active: false}, {volume: 600, active: false}], activeHeart: false, date: new Date(2016, 4, 28), id: 4},
+        {price: 11, name: 'Песоч', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [{volume: 200, active: false}, {volume: 400, active: false}, {volume: 600, active: false}], activeHeart: false, date: new Date(2016, 4, 28), id: 5}, 
+        {price: 11, name: 'Песоч', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [{volume: 200, active: false}, {volume: 400, active: false}, {volume: 600, active: false}], activeHeart: false, date: new Date(2016, 4, 28), id: 6},  
     ])
 
-    const handlerChange = (name) => {
+    
+
+    const handlerClickFilter = (name) => {
         setButtonsSortingCoffeeData(buttonsSortingCoffeeData.map((item) => {
-            if (item.name === name) {
-               
-                return item.active ? {...item, active: false} : {...item, active: true}
+            if (item.name === name) {   
+                if (!item.active){
+                    switch (name) {
+                        case 'newestFirst':
+                            coffeeListItem.sort((a, b) => b.date - a.date)
+                            break
+                        case 'toCheapest':
+                            coffeeListItem.sort((a, b) => b.price - a.price)
+                            break
+                        case 'toExpensive':
+                            coffeeListItem.sort((a, b) => a.price - b.price)
+                            break
+                        default:
+                            break
+                    }
+                    return {...item, active: true}
+                }  
+                coffeeListItem.sort((a, b) => a.id - b.id)                 
             }
+            
             return {...item, active: false}
         }))
     }
 
+    const handlerClickHeart = (id) => {
+        setCoffeeListItem(coffeeListItem.map((item) => {
+            if (item.id === id) {
+                return {...item, activeHeart: !item.activeHeart}
+            }
+            return item
+        }))
+    }
 
     const handlerClickVolume = (id, volume) => {
-        setCoffeeListItem_secondHalfData(coffeeListItem_secondHalfData.map((item) => {
+        setCoffeeListItem(coffeeListItem.map((item) => {
             if (item.id === id) {
                 item.volumeButtons.map((subItem) => {
                     if(subItem.volume === volume) {
@@ -64,7 +92,7 @@ const Menu = () => {
         return <button  type = "button" 
                         className={classSortingCoffee_item}
                         key={name}
-                        onClick={() => handlerChange(name)}>
+                        onClick={() => handlerClickFilter(name)}>
                         {lable}
                 </button>
     })
@@ -86,8 +114,9 @@ const Menu = () => {
             </div>
             
             <CoffeeList 
+                coffeeListItem={coffeeListItem}
                 handlerClickVolume={handlerClickVolume}
-                coffeeListItem_secondHalfData={coffeeListItem_secondHalfData}
+                handlerClickHeart = {handlerClickHeart}
                 />
             
         </div>

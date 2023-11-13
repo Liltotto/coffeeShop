@@ -1,12 +1,35 @@
 .coffeeListItem {
-    width: 331px;
+    max-width: 331px;
+    max-height: 481px;
     border-radius: 12px;
     border: 2px solid var(--color-light-gray, #F3F3F3);
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    margin-right: 32px;
+    //margin: auto; /* автоматический отступ по всем сторонам */
+    ///!!!///
+    //position: absolute;
+        //!!!///
+    &.expanded {
+        max-height: 539px;
+        //transform: scaleY(1.12);
+        .inner{
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+    }
+
+    &:hover {
+        
+        transition: all 0.3s;
+        box-shadow: 1px 1px 12px 0px rgba(0, 0, 0, 0.12);
+
+    }
 
     .coffeeListItem_firstHalf {
         border-radius: 12px 12px 0 0;
-        width: 329px;
-        height: 237px;
+        max-width: 329px;
+        min-height: 237px;
         margin: 0 auto;
         background: url('~@assets/img/menuCoffee/KaramelAmericano.png'), #F3F3F3 50% / cover no-repeat;
         padding: 17px;
@@ -24,20 +47,45 @@
             align-items: center;
             cursor: pointer;
 
+
             .heartIcon {
                 width: 24px;
                 height: 24px;
+                background: url('~@assets/icons/heart.svg') center center / cover no-repeat;
+
+                &.active {
+                    background: url('~@assets/icons/Heart_active.svg') center center / cover no-repeat;
+                }
             }
+
+
 
             &:hover {
                 transition: all 0.3s;
-                background: rgba(#c0bfbf, 0.8);
+                background: #DCDCDC;
+
+                .heartIcon {
+                    transition: all 0.3s;
+                    filter: brightness(.85);
+                }
             }
+
+            &:active {
+                background: #C7C7C7;
+
+                .heartIcon {
+                    filter: brightness(.77);
+                }
+            }
+
+
         }
     }
 
     .coffeeListItem_secondHalf {
         padding: 24px;
+
+
 
         .price {
             color: var(--color-black, #191919);
@@ -89,7 +137,7 @@
         .volumeButtonsWrapper {
             margin-top: 16px;
             display: flex;
-            gap: 12px;
+            //gap: 12px;
             justify-content: space-between;
 
             .volumeButton {
@@ -105,14 +153,14 @@
 
                 cursor: pointer;
                 width: 86px;
-                height: 51px;
+                max-height: 51px;
                 padding: 16px 0;
 
                 border-radius: 8px;
                 border: 0;
                 background: #F3F3F3;
                 transition: all 0.3s;
-                
+
                 &.active {
                     background: #ffffff;
                     border: 1px solid var(--color-primary-green, #377F50);
@@ -120,12 +168,58 @@
                 }
 
                 &:hover {
-                    
+
                     background: rgba(#c0bfbf, 0.8);
                 }
             }
 
 
         }
+
+        .inner {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 16px;
+            opacity: 0;
+            transition: all 1s;
+
+           &.active {
+                transition: all 2s;
+                opacity: 1;
+           }
+
+            .basket {
+                display: flex;
+                padding: 8px;
+                width: 44px;
+                height: 44px;
+                justify-content: center;
+                align-items: center;
+
+                border-radius: 8px;
+
+                border: 1.5px solid var(--color-dark-gray, #505050);
+                background: var(--color-white, #FFF);
+
+                .basket_icon {
+                    width: 24px;
+                    height: 24px;
+                    background: url('~@assets/icons/basket-black.svg') center center / cover no-repeat;
+                }
+
+                &:hover {
+                    transition: all 0.3s;
+                    background: #DCDCDC;
+                }
+
+                &:active {
+                    background: #C7C7C7;
+                }
+            }
+
+        }
+
+
+
     }
 }
