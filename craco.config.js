@@ -8,7 +8,7 @@ module.exports = {
             '@components': resolvePath('./src/components'),
             '@assets': resolvePath('./src/assets'),
             '@scss': resolvePath('./src/scss'),
-
+            '@context': resolvePath('./src/context'),
         }
     },
 }

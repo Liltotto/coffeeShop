@@ -1,12 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef, useContext } from 'react';
 import GreenButton from '../UI/button/GreenButton';
 
 
 //import heart from '@assets/icons/heart.svg';
 
 import './Coffee_List_Item.scss';
+import { AppWidth } from 'src/context/context';
 
-const CoffeeListItem = ({ price, name, description, volumeButtons, activeHeart, handlerClickVolume, handlerClickHeart, itemId, handlerHovered, hovered }) => {
+const CoffeeListItem = ({ price, name, description, volumeButtons, activeHeart, handlerClickVolume, handlerClickHeart, itemId, handlerHovered, hovered, index, coffeeListHeight, forwardedRef, lastIndex }) => {
 
     // const [coffeeListItem_secondHalfData, setCoffeeListItem_secondHalfData] = useState([
     //     {price: 275, name: 'Песочный Карамель Американо', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [200, 400, 600]},
@@ -20,6 +21,32 @@ const CoffeeListItem = ({ price, name, description, volumeButtons, activeHeart, 
 
    // const height = hovered ? 'height: 539px' : 0;
 
+
+   const thisCard = useRef(null);
+
+   const {appWidth} = useContext(AppWidth);
+    
+   useEffect(() => {
+       thisCard.current.style.left = `${((thisCard.current.offsetWidth + (appWidth - 4*thisCard.current.offsetWidth)/3)) * (index%4)}px`;
+       thisCard.current.style.top = `${(thisCard.current.offsetHeight + (coffeeListHeight - 3*thisCard.current.offsetHeight)/2)*Math.floor(index/4) }px`
+
+       if(lastIndex) forwardedRef.current.style.height =`${ parseInt(thisCard.current.style.top) + thisCard.current.offsetHeight }px`
+       
+       console.log((thisCard.current.offsetHeight + (coffeeListHeight - 3*thisCard.current.offsetHeight)/2)*Math.floor(index/4));
+       console.log("index:" + index);
+       console.log(lastIndex);
+        console.log('cl height' + forwardedRef.current.style.height);
+        console.log(thisCard.current.offsetHeight);
+        console.log(thisCard.current.style.top);
+
+   }, [appWidth, index, coffeeListHeight])
+
+
+
+    const [hoverLeave, setHoverLeave] = useState(false);
+    const [coffeeListItemClassfirst, setCoffeeListItemClassfirst] = useState('coffeeListItem');
+
+
     const localHandlerClickVolume = (volumeButton) => {
         handlerClickVolume(itemId, volumeButton.volume)
     }
@@ -27,11 +54,19 @@ const CoffeeListItem = ({ price, name, description, volumeButtons, activeHeart, 
     const handleMouseEnter = () => {
         //console.log('handleMouseEnter');
         handlerHovered(itemId);
-        console.log(hovered);
+        setHoverLeave(false)
+        setCoffeeListItemClassfirst('coffeeListItem expanded')
+        //console.log(hovered);
     };
 
+
     const handleMouseLeave = () => {
-        handlerHovered(-1)
+        setHoverLeave(true)
+        setCoffeeListItemClassfirst('coffeeListItem')
+        // setTimeout(() => {
+        //     //handlerHovered(-1)
+        // }, 1000)
+        
     };
 
     const localHandlerClickHeart = () => {
@@ -84,13 +119,15 @@ const CoffeeListItem = ({ price, name, description, volumeButtons, activeHeart, 
         )
     }
 
-    const coffeeListItemClass = hovered ? 'coffeeListItem expanded' : 'coffeeListItem'
-
+    //const coffeeListItemClassfirst = hovered ? 'coffeeListItem expanded' : 'coffeeListItem'
+    const innerClass = hoverLeave ? 'inner deleted' : 'inner'
+    const coffeeListItemClasslast = hoverLeave ? coffeeListItemClassfirst + ' deleted' : coffeeListItemClassfirst
     return (
         <div 
-            className={coffeeListItemClass}
+            className={coffeeListItemClasslast}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            ref={thisCard}
             >
             <div className="coffeeListItem_firstHalf">
                 {coffeeListItem_firstHalf_heart()}
@@ -101,7 +138,7 @@ const CoffeeListItem = ({ price, name, description, volumeButtons, activeHeart, 
 
 
                 { hovered && (
-                    <div className={hovered ? 'inner active' : 'inner'}>
+                    <div className={innerClass}>
                         <GreenButton>
                             Купить
                         </GreenButton>

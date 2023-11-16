@@ -1,26 +1,38 @@
 .coffeeListItem {
+    position: absolute;
     max-width: 331px;
     max-height: 481px;
     border-radius: 12px;
     border: 2px solid var(--color-light-gray, #F3F3F3);
     overflow: hidden;
-    transition: max-height 0.3s ease;
-    margin-right: 32px;
+    transition: max-height 1s ease;
+    z-index: 1;
+    background-color: var(--color-white, #FFF);
+    // margin-top: 40px;
+    // margin-right: 32px;
+
     //margin: auto; /* автоматический отступ по всем сторонам */
     ///!!!///
-    //position: absolute;
-        //!!!///
+    
+    //!!!///
+
+    
     &.expanded {
         max-height: 539px;
-        //transform: scaleY(1.12);
-        .inner{
-            opacity: 1;
-            transition: opacity 0.3s;
+        transition: max-height 0.3s ease;
+        z-index: 2;
+        // .inner {
+        //     opacity: 1;
+        //     transition: opacity 0.3s;
+        // }
+        &.deleted{
+            max-height: 481px;
+            transition: max-height 0.3s ease;
         }
     }
 
     &:hover {
-        
+
         transition: all 0.3s;
         box-shadow: 1px 1px 12px 0px rgba(0, 0, 0, 0.12);
 
@@ -181,13 +193,18 @@
             justify-content: space-between;
             margin-top: 16px;
             opacity: 0;
-            transition: all 1s;
+            animation: ani 0.7s forwards;
+            
+            //    &.active {
+            //         transition: all 2s;
+            //         opacity: 1;
+            //    }
 
-           &.active {
-                transition: all 2s;
-                opacity: 1;
-           }
-
+            &.deleted {
+                
+                animation: aniDeleted 0.3s forwards;
+            }
+            
             .basket {
                 display: flex;
                 padding: 8px;
@@ -217,8 +234,30 @@
                 }
             }
 
+            
+
         }
 
+
+        @keyframes ani {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes aniDeleted {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
 
 
     }

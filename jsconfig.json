@@ -8,8 +8,10 @@
         "@assets/*": ["src/assets/*"],
         "@assets": ["src/assets"],
         "@scss/*": ["src/scss/*"],
-        "@scss": ["src/scss"]
+        "@scss": ["src/scss"],
+        "@context/*": ["src/context/*"],
+        "@context": ["src/context"]
       }
     },
     "exclude": ["node_modules"]
-  }
+}

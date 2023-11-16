@@ -1,11 +1,17 @@
 .coffeeList{
     margin-top: 32px;
-    //min-height: 1519px;
-    display: flex;
+    position: relative;
+    max-height: 1511px;
+    padding-bottom: 8px;
+    //min-height: 477px;
     //justify-content: space-between;
     //align-content: space-between;
-    flex-wrap: wrap;
-    *:nth-child(4n) {
-        margin-right: 0; 
-    }
+    //flex-wrap: wrap;
+    // *:nth-child(4n) {
+    //     margin-right: 0; 
+    // }
+
+    // *:nth-child(-n+4) {
+    //     margin-top: 0; 
+    // }
 }
