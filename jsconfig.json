@@ -10,7 +10,9 @@
         "@scss/*": ["src/scss/*"],
         "@scss": ["src/scss"],
         "@context/*": ["src/context/*"],
-        "@context": ["src/context"]
+        "@context": ["src/context"],
+        "@services/*": ["src/services/*"],
+        "@services": ["src/services"]
       }
     },
     "exclude": ["node_modules"]

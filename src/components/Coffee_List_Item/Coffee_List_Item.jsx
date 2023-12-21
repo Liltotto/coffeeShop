@@ -32,12 +32,12 @@ const CoffeeListItem = ({ price, name, description, volumeButtons, activeHeart, 
 
        if(lastIndex) forwardedRef.current.style.height =`${ parseInt(thisCard.current.style.top) + thisCard.current.offsetHeight }px`
        
-       console.log((thisCard.current.offsetHeight + (coffeeListHeight - 3*thisCard.current.offsetHeight)/2)*Math.floor(index/4));
-       console.log("index:" + index);
-       console.log(lastIndex);
-        console.log('cl height' + forwardedRef.current.style.height);
-        console.log(thisCard.current.offsetHeight);
-        console.log(thisCard.current.style.top);
+    //    console.log((thisCard.current.offsetHeight + (coffeeListHeight - 3*thisCard.current.offsetHeight)/2)*Math.floor(index/4));
+    //    console.log("index:" + index);
+    //    console.log(lastIndex);
+    //     console.log('cl height' + forwardedRef.current.style.height);
+    //     console.log(thisCard.current.offsetHeight);
+    //     console.log(thisCard.current.style.top);
 
    }, [appWidth, index, coffeeListHeight])
 

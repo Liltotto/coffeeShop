@@ -9,6 +9,7 @@ module.exports = {
             '@assets': resolvePath('./src/assets'),
             '@scss': resolvePath('./src/scss'),
             '@context': resolvePath('./src/context'),
+            '@services': resolvePath('./src/services'),
         }
     },
 }

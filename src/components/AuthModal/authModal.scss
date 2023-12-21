@@ -1,0 +1,110 @@
+.formAuth,
+.formReg {
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.formReg {
+    height: 400px;
+}
+
+.formAuth> input, .formReg >input {
+    display: flex;
+    height: 48px;
+    padding: 12px;
+    //flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    //gap: 2px;
+    border-radius: 8px;
+    border: 1px solid var(--Primary-BgColorKtGray, #6b6b6b);
+}
+
+.input-wrapper {
+    position: relative;
+  
+    .input-field {
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-bottom: 1px solid #ccc;
+  
+      &:focus {
+        + .input-label,
+        &:not(:placeholder-shown) + .input-label {
+          top: -15px;
+          font-size: 12px;
+          color: blue;
+        }
+      }
+    }
+  
+    .input-label {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 14px;
+      color: #999;
+      pointer-events: none;
+      transition: 0.3s ease-out;
+    }
+  }
+
+.formAuth> button, .formReg >button {
+    display: flex;
+    height: 26px;
+    //padding: 5px;
+    //flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    //gap: 2px;
+    background-color: #377F50;
+    color: #FFF;
+    border-radius: 20px;
+    border: 0;
+
+    &:hover {
+        transition: all 0.3s;
+        background: rgba(#0b3e1d, 0.8);
+    }
+
+    &:active {
+        background: rgba(#27673d, 0.8);
+    }
+
+    //border: 1px solid var(--Primary-BgColorKtGray, #EBEAEF);
+}
+
+.formAuth> button[type="button"], .formReg >button[type="button"] {
+    display: flex;
+    height: 26px;
+    //padding: 5px;
+    //flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    //gap: 2px;
+    background-color: #d3d3d3;
+    color: black;
+    border-radius: 20px;
+    border: 0;
+    
+    &:hover {
+        transition: all 0.3s;
+        background: rgba(#979797, 0.8);
+    }
+
+    &:active {
+        background: rgba(#5a5a5a82, 0.8);
+    }
+
+    //border: 1px solid var(--Primary-BgColorKtGray, #EBEAEF);
+}
+
+// .formReg {
+//     height: 300px;
+//     display: flex; 
+//     flex-direction: column;
+//     justify-content: space-between;
+// }
