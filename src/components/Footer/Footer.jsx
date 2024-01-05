@@ -189,7 +189,7 @@ const Footer = () => {
                     <input type="text" name='name' placeholder='Enter name' value={productFormData.name} onChange={(e) => { setProductFormData({ ...productFormData, name: e.target.value }) }} />
                     <input type="number" price='price' placeholder='Enter price' value={productFormData.price} onChange={(e) => setProductFormData({ ...productFormData, price: +e.target.value })} />
                     <div className="footer__form__product__available">
-                        {/* <label htmlFor="available">Наличие</label> */}
+                       
                         <div style={{ display: 'inline-block', marginRight: '10px' }}>Наличие</div>
                         <label htmlFor="yes">Да</label>
                         <input type="radio" name="available" id="yes" value={'yes'} checked={productFormData.is_available ===  true || productFormData.is_available === 'yes'} onChange={(e) => setProductFormData({ ...productFormData, is_available: e.target.value === 'yes' ? true : false })} />
@@ -200,7 +200,7 @@ const Footer = () => {
                     <input type="number" name='multiplier' placeholder='Enter multiplier' value={productFormData.multiplier} onChange={(e) => setProductFormData({ ...productFormData, multiplier: +e.target.value })} />
                     <input type="text" name='presets' placeholder='Enter presets' value={productFormData.presets.join(' ')} onChange={(e) => setProductFormData({ ...productFormData, presets: e.target.value.split(' ') })} />
                     <textarea name="description" id="description" cols="30" rows="5" placeholder='Enter description' value={productFormData.description} onChange={(e) => setProductFormData({ ...productFormData, description: e.target.value })}></textarea>
-                    {/* <input type="text" placeholder='Enter description' /> */}
+                   
                 </div>
 
                 <div className="footer__form__editor">
