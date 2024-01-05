@@ -23,6 +23,24 @@ class ProductService {
         return res
     }
 
+    createResource = async (url, data) => {
+        const res = await axios.post(url, data)
+        return res
+    }
+
+    updateResource = async (url, data) => {
+        const res = await axios.put(url, data)
+        return res
+    }
+
+    deleteResource = async (url) => {
+        const res = await axios.delete(url)
+        return res
+    }
+
+//<!----------------------------------------------->
+//<!----------------------------------------------->
+//<!----------------------------------------------->
 
     getSearchedResult = async (count, name) => {
         const result = await this.getResource(`${this._apiBase}/product/search/${count}/${name}`)        
@@ -42,7 +60,22 @@ class ProductService {
     }
 
     getProduct = async (id) => {
-        const result = await this.getResourceTest(`${this._apiBase}/product/test/${id}`)        
+        const result = await this.getResource(`${this._apiBase}/product/${id}`)        
+        return result
+    }
+
+    createProduct = async (data) => {
+        const result = await this.createResource(`${this._apiBase}/product/`, data)        
+        return result
+    }
+
+    updateProduct = async (data) => {
+        const result = await this.updateResource(`${this._apiBase}/product/`, data)        
+        return result
+    }
+
+    deleteProduct = async (id) => {
+        const result = await this.deleteResource(`${this._apiBase}/product/${id}`)        
         return result
     }
 

@@ -1,3 +1,25 @@
 .footer{
     margin: 70px;
+    width: 500px;
+    .footer__form{
+        display: flex;
+        justify-content: space-between;
+        .footer__form__product{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer__form__editor{
+            display: flex;
+            flex-direction: column;
+            .searchResultList{
+                .searchAndRes{
+                    position: absolute;
+                    
+                }
+                
+            }
+        }
+        
+    }
 }

@@ -106,9 +106,9 @@ function AuthModal() {
             !isRegistration ? (
                 <form className="formAuth">
 
-                    <div class="input-wrapper">
+                    <div className="input-wrapper">
                         <input type="text" id="myInput" placeholder="" className="input-field" onFocus={() => classLabel = 'input-label active'} onBlur={()=>classLabel = 'input-label'} onChange={(event) => setSignInData({ ...signInData, email: event.target.value }) }/>
-                        <label for="myInput" className={classLabel}>Введите данные</label>
+                        <label htmlFor="myInput" className={classLabel}>Введите данные</label>
                     </div>
                     <input type="password" placeholder="Enter Password" name="psw" onChange={(event) => setSignInData({ ...signInData, password: event.target.value })} required />
 

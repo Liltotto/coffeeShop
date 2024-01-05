@@ -6,7 +6,7 @@ import Footer from '../Footer/Footer';
 
 import './App.scss';
 import { AppWidth } from 'src/context/context';
-import FormAuth from '@components/FormAuth/FormAuth';
+//import FormAuth from '@components/FormAuth/FormAuth';
 import ModalBase from '@components/ModalBase/ModalBase';
 import AuthModal from '@components/AuthModal/AuthModal';
 
