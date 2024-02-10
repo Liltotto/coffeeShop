@@ -22,4 +22,23 @@
         }
         
     }
+    .footer_form_discount{
+        display: flex;
+        justify-content: space-between;
+        .footer_form_discount_left{
+            display: flex;
+            flex-direction: column;
+        }
+        .footer__form__editor{
+            display: flex;
+            flex-direction: column;
+            .searchResultList{
+                .searchAndRes{
+                    position: absolute;
+                    
+                }
+                
+            }
+        }
+    }
 }
