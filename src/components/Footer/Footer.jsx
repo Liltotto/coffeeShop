@@ -153,7 +153,7 @@ const Footer = () => {
         const { id, ...rest } = productFormData
         const correctPresets = rest.presets.map((el) => (el + ' мл'))
 
-        productService.createProduct({ ...rest, presets: correctPresets })
+        productService.createProduct(document.getElementById('imageFile').files[0],{ ...rest, presets: correctPresets })
             .then(() => {
                 setProductFormData({
                     id: '',
@@ -342,6 +342,7 @@ const Footer = () => {
             {/* АДМИНКА РЕДАКТИРОВАНИЕ И ДОБАВЛЕНИЕ ПРОДУКТОВ */}
 
             <form action="" className='footer__form'>
+
                 <div className="footer__form__product">
                     <input type="text" name='name' placeholder='Enter name' value={productFormData.name} onChange={(e) => { setProductFormData({ ...productFormData, name: e.target.value }) }} />
                     <input type="number" price='price' placeholder='Enter price' value={productFormData.price} onChange={(e) => setProductFormData({ ...productFormData, price: +e.target.value })} />
@@ -357,7 +358,7 @@ const Footer = () => {
                     <input type="number" name='multiplier' placeholder='Enter multiplier' value={productFormData.multiplier} onChange={(e) => setProductFormData({ ...productFormData, multiplier: +e.target.value })} />
                     <input type="text" name='presets' placeholder='Enter presets' value={productFormData.presets.join(' ')} onChange={(e) => setProductFormData({ ...productFormData, presets: e.target.value.split(' ') })} />
                     <textarea name="description" id="description" cols="30" rows="5" placeholder='Enter description' value={productFormData.description} onChange={(e) => setProductFormData({ ...productFormData, description: e.target.value })}></textarea>
-
+                    <input type="file" name="imageFile" id="imageFile"  />
                 </div>
 
                 <div className="footer__form__editor">

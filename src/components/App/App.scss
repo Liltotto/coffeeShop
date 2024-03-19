@@ -8,20 +8,18 @@
 }
 
 html{
+    
     font-family: "Podkova", sans-serif;
 }
 
 body{
     overflow-x: hidden;
-}
-
-#root{
     display: flex;
     justify-content: center;
 }
 
+
 .App{
     width: 1420px;
-    //min-height: 1000px;
 }
 

@@ -7,7 +7,7 @@ import GreenButton from '../UI/button/GreenButton';
 import './Coffee_List_Item.scss';
 import { AppWidth } from 'src/context/context';
 
-const CoffeeListItem = ({ price, name, description, volumeButtons, activeHeart, handlerClickVolume, handlerClickHeart, itemId, handlerHovered, hovered, index, coffeeListHeight, forwardedRef, lastIndex }) => {
+const CoffeeListItem = ({ price, name, description, volumeButtons, activeHeart, handlerClickVolume, handlerClickHeart, itemId, handlerHovered, hovered, index, coffeeListHeight, forwardedRef, lastIndex, coffeeListItem }) => {
 
     // const [coffeeListItem_secondHalfData, setCoffeeListItem_secondHalfData] = useState([
     //     {price: 275, name: 'Песочный Карамель Американо', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [200, 400, 600]},
@@ -19,28 +19,47 @@ const CoffeeListItem = ({ price, name, description, volumeButtons, activeHeart, 
 
     //const [hovered, setIsHovered] = useState(-1); 
 
-   // const height = hovered ? 'height: 539px' : 0;
+    // const height = hovered ? 'height: 539px' : 0;
 
 
-   const thisCard = useRef(null);
+    const thisCard = useRef(null);
 
-   const {appWidth} = useContext(AppWidth);
-    
-   useEffect(() => {
-       thisCard.current.style.left = `${((thisCard.current.offsetWidth + (appWidth - 4*thisCard.current.offsetWidth)/3)) * (index%4)}px`;
-       thisCard.current.style.top = `${(thisCard.current.offsetHeight + (coffeeListHeight - 3*thisCard.current.offsetHeight)/2)*Math.floor(index/4) }px`
+    const { appWidth } = useContext(AppWidth);
 
-       if(lastIndex) forwardedRef.current.style.height =`${ parseInt(thisCard.current.style.top) + thisCard.current.offsetHeight }px`
-       
-    //    console.log((thisCard.current.offsetHeight + (coffeeListHeight - 3*thisCard.current.offsetHeight)/2)*Math.floor(index/4));
-    //    console.log("index:" + index);
-    //    console.log(lastIndex);
-    //     console.log('cl height' + forwardedRef.current.style.height);
-    //     console.log(thisCard.current.offsetHeight);
-    //     console.log(thisCard.current.style.top);
+    useEffect(() => {
+        thisCard.current.style.left = `${((thisCard.current.offsetWidth + (appWidth - 4 * thisCard.current.offsetWidth) / 3)) * (index % 4)}px`;
+        thisCard.current.style.top = `${(thisCard.current.offsetHeight + (coffeeListHeight - 3 * thisCard.current.offsetHeight) / 2) * Math.floor(index / 4)}px`
 
-   }, [appWidth, index, coffeeListHeight])
+        if (lastIndex) forwardedRef.current.style.height = `${parseInt(thisCard.current.style.top) + thisCard.current.offsetHeight}px`
 
+
+        console.log('AOE' + forwardedRef.current.style.height);
+
+        //    console.log((thisCard.current.offsetHeight + (coffeeListHeight - 3*thisCard.current.offsetHeight)/2)*Math.floor(index/4));
+        //    console.log("index:" + index);
+        //    console.log(lastIndex);
+        //     console.log('cl height' + forwardedRef.current.style.height);
+        //     console.log(thisCard.current.offsetHeight);
+        //     console.log(thisCard.current.style.top);
+
+    }, [appWidth, index, coffeeListHeight, coffeeListItem])
+
+    useEffect(() => {
+
+        const coffeeListStyles = window.getComputedStyle(forwardedRef.current)
+
+        console.log('awe');
+        console.log(parseInt(forwardedRef.current.style.height));
+        console.log(parseInt(coffeeListStyles.getPropertyValue("max-height")));
+
+        if (parseInt(forwardedRef.current.style.height) >= parseInt(coffeeListStyles.getPropertyValue("max-height"))) {
+            console.log('tyyyyyt');
+            forwardedRef.current.style.maxHeight = forwardedRef.current.style.height
+        }
+
+        console.log('AOEwww' + forwardedRef.current.style.height);
+
+    }, [coffeeListItem])
 
 
     const [hoverLeave, setHoverLeave] = useState(false);
@@ -66,7 +85,7 @@ const CoffeeListItem = ({ price, name, description, volumeButtons, activeHeart, 
         // setTimeout(() => {
         //     //handlerHovered(-1)
         // }, 1000)
-        
+
     };
 
     const localHandlerClickHeart = () => {
@@ -123,12 +142,12 @@ const CoffeeListItem = ({ price, name, description, volumeButtons, activeHeart, 
     const innerClass = hoverLeave ? 'inner deleted' : 'inner'
     const coffeeListItemClasslast = hoverLeave ? coffeeListItemClassfirst + ' deleted' : coffeeListItemClassfirst
     return (
-        <div 
+        <div
             className={coffeeListItemClasslast}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             ref={thisCard}
-            >
+        >
             <div className="coffeeListItem_firstHalf">
                 {coffeeListItem_firstHalf_heart()}
             </div>
@@ -137,7 +156,7 @@ const CoffeeListItem = ({ price, name, description, volumeButtons, activeHeart, 
                 {coffeeListItem_secondHalf(price, name, description, volumeButtons)}
 
 
-                { hovered && (
+                {hovered && (
                     <div className={innerClass}>
                         <GreenButton>
                             Купить
@@ -146,7 +165,7 @@ const CoffeeListItem = ({ price, name, description, volumeButtons, activeHeart, 
                         <button
                             type="button"
                             className="basket"
-                            //onClick={() => localHandlerClickHeart(itemId)}
+                        //onClick={() => localHandlerClickHeart(itemId)}
                         >
                             <div className="basket_icon"></div>
                         </button>
@@ -154,7 +173,7 @@ const CoffeeListItem = ({ price, name, description, volumeButtons, activeHeart, 
                 }
 
             </div>
-        </div>        
+        </div>
     );
 };
 

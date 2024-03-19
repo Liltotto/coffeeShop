@@ -1,149 +1,156 @@
-.header {
-    //margin-top: 24px;
+.header_wrapper {
+    //position: relative;
     position: sticky;
     top: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 96px;
-    background: var(--color-white, #FFF);
     z-index: 10;
-    //border-bottom: 1px solid var(--color-light-gray, #F3F3F3); 
 
-
-    // .heartAndBasket {
-    //     width: 289px;
-    //     display: flex;
-    //     justify-content: space-between;
-    //     align-items: center;
-
-    //     .heart {
-    //         display: flex;
-    //         width: 52px;
-    //         height: 52px;
-    //         justify-content: center;
-    //         align-items: center;
-    //         gap: 12px;
-    //         border-radius: 12px;
-    //         border: 1.5px solid var(--color-light-gray, #F3F3F3);
-    //     }
-
-
-    // }
-
-    .searchInput {
-        display: flex;
-        width: 524px;
-        height: 57px;
-        padding: 8px 16px;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 16px;
-        border-radius: 8px;
-        border: 2px solid var(--color-light-gray, #F3F3F3);
-        background: var(--color-white, #FFF);
-
-        &::placeholder {
-            color: #1E1E1E;
-            font-family: Raleway;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 25px;
-        }
-    }
-
-    .basketAndAuth {
+    .header {
+        //margin-top: 24px;
+        position: relative;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 289px;
-        
+        height: 96px;
+        background: var(--color-white, #FFF);
 
-        .basketButton {
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 5vw;
+            background: var(--color-white, #FFF);
+        }
+        &::before {
+            left: -5vw;
+        }
+        &::after {
+            right: -5vw;
+        }
+
+
+        .searchInput {
             display: flex;
-            max-height: 52px;
-            min-width: 210px;
-            padding: 13px 29px;
+            width: 524px;
+            height: 57px;
+            padding: 8px 16px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 16px;
+            border-radius: 8px;
+            border: 2px solid var(--color-light-gray, #F3F3F3);
+            background: var(--color-white, #FFF);
+
+            &::placeholder {
+                color: #1E1E1E;
+                font-family: Raleway;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 25px;
+            }
+        }
+
+        .basketAndAuth {
+            display: flex;
             justify-content: space-between;
             align-items: center;
-            cursor: pointer;
+            width: 289px;
 
-            //gap: 12px;
 
-            border-radius: 12px;
-            border: 1px solid var(--color-primary-green, #377F50);
-            background: var(--color-primary-green, #377F50);
+            .basketButton {
+                display: flex;
+                max-height: 52px;
+                min-width: 210px;
+                padding: 13px 29px;
+                justify-content: space-between;
+                align-items: center;
+                cursor: pointer;
 
-            color: var(--color-white, #FFF);
-            text-align: center;
-            font-family: Inter;
-            font-size: 20px;
-            font-style: normal;
-            font-weight: 500;
-            //line-height: 110%;
-            /* 22px */
-            text-transform: capitalize;
+                //gap: 12px;
 
-            &:hover {
-                transition: all 0.3s;
-                background: rgba(#0b3e1d, 0.8);
+                border-radius: 12px;
+                border: 1px solid var(--color-primary-green, #377F50);
+                background: var(--color-primary-green, #377F50);
+
+                color: var(--color-white, #FFF);
+                text-align: center;
+                font-family: Inter;
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 500;
+                //line-height: 110%;
+                /* 22px */
+                text-transform: capitalize;
+
+                &:hover {
+                    transition: all 0.3s;
+                    background: rgba(#0b3e1d, 0.8);
+                }
+
+                &:active {
+                    background: rgba(#27673d, 0.8);
+                }
+
+                .basket_icon {
+                    background-image: url('~@assets/icons/basket.svg');
+                    width: 24px;
+                    height: 24px;
+                    //?????
+                }
             }
 
-            &:active {
-                background: rgba(#27673d, 0.8);
-            }
+            .authButton {
+                border-radius: 8px;
+                border: 0;
+                background: var(--color-white, #FFF);
+                display: flex;
+                //border: 1px solid #dad6d6;
+                padding: 6px;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
 
-            .basket_icon {
-                background-image: url('~@assets/icons/basket.svg');
-                width: 24px;
-                height: 24px;
-                //?????
+                .authIcon {
+                    width: 40px;
+                    height: 40px;
+                    background: url('~@assets/icons/signInIcon.svg') center center / cover no-repeat;
+
+                }
+
+                &:hover {
+                    transition: all 0.3s;
+                    background: #DCDCDC;
+
+                    // .heartIcon {
+                    //     transition: all 0.3s;
+                    //     filter: brightness(.85);
+                    // }
+                }
+
             }
         }
 
-        .authButton {
-            border-radius: 8px;
-            border: 0;
-            background: var(--color-white, #FFF);
-            display: flex;
-            //border: 1px solid #dad6d6;
-            padding: 6px;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            .authIcon{
-                width: 40px;
-                height: 40px;
-                background: url('~@assets/icons/signInIcon.svg') center center / cover no-repeat;
-                
-            }
 
-            &:hover {
-                transition: all 0.3s;
-                background: #DCDCDC;
 
-                // .heartIcon {
-                //     transition: all 0.3s;
-                //     filter: brightness(.85);
-                // }
-            }
-           
-        }
     }
-
 
     .bottom_line {
         position: absolute;
         bottom: 0;
 
         //right: 0;
+        left: 0;
         width: 100vw;
+        //transform: translateY(-50%);
         left: calc(-50vw + 50%);
 
         //margin-left: -50%;
         height: 1px;
         background-color: #F3F3F3;
+      
     }
 }
+

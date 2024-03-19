@@ -19,6 +19,10 @@ const CoffeeList = ({ coffeeListItem, handlerClickVolume, handlerClickHeart }) =
         console.log('max-height: ' + coffeeListHeight);
     }, [coffeeListHeight])
     
+    useEffect(() => {
+        if(coffeeListComponent.current) console.log('heighTTT: ' + coffeeListComponent.current.style.height);
+    }, [coffeeListComponent.current?.style.height])
+
     const [hoveredList, setIsHoveredList] = useState([]); 
     
     const handlerHovered = (hoveredId) => {
@@ -57,6 +61,7 @@ const CoffeeList = ({ coffeeListItem, handlerClickVolume, handlerClickHeart }) =
             handlerClickVolume={handlerClickVolume}
             handlerClickHeart={handlerClickHeart}
             coffeeListHeight={coffeeListHeight}
+            coffeeListItem={coffeeListItem}
             forwardedRef={coffeeListComponent}
             lastIndex={lastIndex}
         />

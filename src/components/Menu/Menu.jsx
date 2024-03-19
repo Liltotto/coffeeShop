@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CoffeeList from '../Coffee_List/Coffee_List';
 
 import './Menu.scss';
 
 const Menu = () => {
 
-    
+
 
     const [buttonsSortingCoffeeData, setButtonsSortingCoffeeData] = useState([
         { name: 'newestFirst', lable: 'Новизне', active: false },
@@ -24,17 +24,31 @@ const Menu = () => {
         { price: 2, name: 'Песочный Карамель', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [{ volume: 200, active: false }, { volume: 400, active: false }, { volume: 600, active: false }], activeHeart: false, date: new Date(2016, 5, 28), id: 2 },
         { price: 27, name: 'Песочный', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [{ volume: 200, active: false }, { volume: 400, active: false }, { volume: 600, active: false }], activeHeart: false, date: new Date(2016, 2, 28), id: 3 },
         { price: 11, name: 'Песоч', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [{ volume: 200, active: false }, { volume: 400, active: false }, { volume: 600, active: false }], activeHeart: false, date: new Date(2016, 4, 28), id: 4 },
-        {price: 11, name: 'Песоч', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [{volume: 200, active: false}, {volume: 400, active: false}, {volume: 600, active: false}], activeHeart: false, date: new Date(2016, 4, 28), id: 5}, 
-        {price: 11, name: 'Песоч', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [{volume: 200, active: false}, {volume: 400, active: false}, {volume: 600, active: false}], activeHeart: false, date: new Date(2016, 4, 28), id: 6},  
+        { price: 11, name: 'Песоч', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [{ volume: 200, active: false }, { volume: 400, active: false }, { volume: 600, active: false }], activeHeart: false, date: new Date(2016, 4, 28), id: 5 },
+        { price: 11, name: 'Песоч', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [{ volume: 200, active: false }, { volume: 400, active: false }, { volume: 600, active: false }], activeHeart: false, date: new Date(2016, 4, 28), id: 6 },
         { price: 11, name: 'Песоч', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [{ volume: 200, active: false }, { volume: 400, active: false }, { volume: 600, active: false }], activeHeart: false, date: new Date(2016, 4, 28), id: 7 },
-        {price: 11, name: 'Песоч', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [{volume: 200, active: false}, {volume: 400, active: false}, {volume: 600, active: false}], activeHeart: false, date: new Date(2016, 4, 28), id: 8}, 
+        { price: 11, name: 'Песоч', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [{ volume: 200, active: false }, { volume: 400, active: false }, { volume: 600, active: false }], activeHeart: false, date: new Date(2016, 4, 28), id: 8 },
         { price: 11, name: 'Песоч', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [{ volume: 200, active: false }, { volume: 400, active: false }, { volume: 600, active: false }], activeHeart: false, date: new Date(2016, 4, 28), id: 9 },
-        {price: 11, name: 'Песоч', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [{volume: 200, active: false}, {volume: 400, active: false}, {volume: 600, active: false}], activeHeart: false, date: new Date(2016, 4, 28), id: 10},
-         
-        
+        { price: 11, name: 'Песоч', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [{ volume: 200, active: false }, { volume: 400, active: false }, { volume: 600, active: false }], activeHeart: false, date: new Date(2016, 4, 28), id: 10 },
+        { price: 11, name: 'Песоч', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [{ volume: 200, active: false }, { volume: 400, active: false }, { volume: 600, active: false }], activeHeart: false, date: new Date(2016, 4, 28), id: 11 },
+
+        { price: 11, name: 'Песоч', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [{ volume: 200, active: false }, { volume: 400, active: false }, { volume: 600, active: false }], activeHeart: false, date: new Date(2016, 4, 28), id: 12 },
+
+        { price: 11, name: 'Песоч', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [{ volume: 200, active: false }, { volume: 400, active: false }, { volume: 600, active: false }], activeHeart: false, date: new Date(2016, 4, 28), id: 13 },
+
+        { price: 11, name: 'Песоч', description: 'Двойной американо с добавлением карамельного сиропа, взбитые сливки, посыпка соленых карамельных крошек', volumeButtons: [{ volume: 200, active: false }, { volume: 400, active: false }, { volume: 600, active: false }], activeHeart: false, date: new Date(2016, 4, 28), id: 14 },
+
     ])
 
-    
+    const [displayedCoffeeList, setDisplayedCoffeeList] = useState([])
+
+    useEffect(() => {
+        if(coffeeListItem.length > 12){
+            setDisplayedCoffeeList(coffeeListItem.slice(0, 12))
+        } else {
+            setDisplayedCoffeeList(coffeeListItem)
+        }
+    }, [])
 
     const handlerClickFilter = (name) => {
         setButtonsSortingCoffeeData(buttonsSortingCoffeeData.map((item) => {
@@ -122,10 +136,22 @@ const Menu = () => {
             </div>
 
             <CoffeeList
-                coffeeListItem={coffeeListItem}
+                coffeeListItem={displayedCoffeeList}
                 handlerClickVolume={handlerClickVolume}
                 handlerClickHeart={handlerClickHeart}
             />
+
+            <button onClick={
+                () => {
+                    if(displayedCoffeeList.length === coffeeListItem.length){
+                        setDisplayedCoffeeList(coffeeListItem.slice(0, 12))
+                        return
+                    }
+                    setDisplayedCoffeeList(coffeeListItem)
+                    
+                    //ТУТ СДЕЛАТЬ ТАК ЧТОБЫ ОНА ИСЧЕЗАЛА ЛИБО МЕНЯЛА ЗНАЧЕНИЕ ВНУТРИ И СПУСКАЛАСЬ ПЛАВНО ВНИЗ
+                }
+            }>Показать все</button>
 
         </div>
     );

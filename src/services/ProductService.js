@@ -23,8 +23,17 @@ class ProductService {
         return res
     }
 
-    createResource = async (url, data) => {
-        const res = await axios.post(url, data)
+    createResource = async (url, file, data) => {
+
+        const formData = new FormData();
+        formData.append('file', file); // замените file на ваш файл
+        formData.append('data', JSON.stringify(data));
+
+        const res = await axios.post(url, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
         return res
     }
 
@@ -38,12 +47,12 @@ class ProductService {
         return res
     }
 
-//<!----------------------------------------------->
-//<!----------------------------------------------->
-//<!----------------------------------------------->
+    //<!----------------------------------------------->
+    //<!----------------------------------------------->
+    //<!----------------------------------------------->
 
     getSearchedResult = async (count, name) => {
-        const result = await this.getResource(`${this._apiBase}/product/search/${count}/${name}`)        
+        const result = await this.getResource(`${this._apiBase}/product/search/${count}/${name}`)
         return result
     }
 
@@ -60,27 +69,27 @@ class ProductService {
     }
 
     getProduct = async (id) => {
-        const result = await this.getResource(`${this._apiBase}/product/${id}`)        
+        const result = await this.getResource(`${this._apiBase}/product/${id}`)
         return result
     }
 
-    createProduct = async (data) => {
-        const result = await this.createResource(`${this._apiBase}/product/`, data)        
+    createProduct = async (file, data) => {
+        const result = await this.createResource(`${this._apiBase}/product/`, file, data)
         return result
     }
 
     updateProduct = async (data) => {
-        const result = await this.updateResource(`${this._apiBase}/product/`, data)        
+        const result = await this.updateResource(`${this._apiBase}/product/`, data)
         return result
     }
 
     deleteProduct = async (id) => {
-        const result = await this.deleteResource(`${this._apiBase}/product/${id}`)        
+        const result = await this.deleteResource(`${this._apiBase}/product/${id}`)
         return result
     }
 
     _transformProduct = (char) => {
-        return{
+        return {
             id: char.id,
             name: char.name,
             description: char.description ? char.description : 'There is no description for this character',
