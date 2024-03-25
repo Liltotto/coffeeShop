@@ -42,6 +42,8 @@ const Menu = () => {
 
     const [displayedCoffeeList, setDisplayedCoffeeList] = useState([])
 
+    const [isShowAll, setIsShowAll] = useState(false)
+
     useEffect(() => {
         if(coffeeListItem.length > 12){
             setDisplayedCoffeeList(coffeeListItem.slice(0, 12))
@@ -49,6 +51,14 @@ const Menu = () => {
             setDisplayedCoffeeList(coffeeListItem)
         }
     }, [])
+
+    useEffect(() => {
+        if(isShowAll) {
+            setDisplayedCoffeeList(coffeeListItem)
+        } else {
+            setDisplayedCoffeeList(coffeeListItem.slice(0, 12))
+        }
+    }, [coffeeListItem])
 
     const handlerClickFilter = (name) => {
         setButtonsSortingCoffeeData(buttonsSortingCoffeeData.map((item) => {
@@ -77,6 +87,7 @@ const Menu = () => {
     }
 
     const handlerClickHeart = (id) => {
+        console.log('jojoj ' + id);
         setCoffeeListItem(coffeeListItem.map((item) => {
             if (item.id === id) {
                 return { ...item, activeHeart: !item.activeHeart }
@@ -143,11 +154,14 @@ const Menu = () => {
 
             <button onClick={
                 () => {
+                    
                     if(displayedCoffeeList.length === coffeeListItem.length){
                         setDisplayedCoffeeList(coffeeListItem.slice(0, 12))
+                        setIsShowAll(false)
                         return
                     }
                     setDisplayedCoffeeList(coffeeListItem)
+                    setIsShowAll(true)
                     
                     //ТУТ СДЕЛАТЬ ТАК ЧТОБЫ ОНА ИСЧЕЗАЛА ЛИБО МЕНЯЛА ЗНАЧЕНИЕ ВНУТРИ И СПУСКАЛАСЬ ПЛАВНО ВНИЗ
                 }

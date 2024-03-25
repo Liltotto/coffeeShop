@@ -17,7 +17,7 @@ const CoffeeList = ({ coffeeListItem, handlerClickVolume, handlerClickHeart }) =
         const coffeeListStyles = window.getComputedStyle(coffeeListComponent.current)
         setCoffeeListHeight(parseInt(coffeeListStyles.getPropertyValue("max-height")))
         console.log('max-height: ' + coffeeListHeight);
-    }, [coffeeListHeight])
+    }, [])
     
     useEffect(() => {
         if(coffeeListComponent.current) console.log('heighTTT: ' + coffeeListComponent.current.style.height);

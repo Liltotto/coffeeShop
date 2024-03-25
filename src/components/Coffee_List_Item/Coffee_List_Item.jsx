@@ -42,7 +42,7 @@ const CoffeeListItem = ({ price, name, description, volumeButtons, activeHeart, 
         //     console.log(thisCard.current.offsetHeight);
         //     console.log(thisCard.current.style.top);
 
-    }, [appWidth, index, coffeeListHeight, coffeeListItem])
+    }, [appWidth, index, coffeeListHeight, coffeeListItem.length])
 
     useEffect(() => {
 
@@ -88,8 +88,8 @@ const CoffeeListItem = ({ price, name, description, volumeButtons, activeHeart, 
 
     };
 
-    const localHandlerClickHeart = () => {
-        handlerClickHeart(itemId)
+    const localHandlerClickHeart = (id) => {
+        handlerClickHeart(id)
     }
 
     const coffeeListItem_firstHalf_heart = () => {
