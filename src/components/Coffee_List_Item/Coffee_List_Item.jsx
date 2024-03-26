@@ -62,7 +62,7 @@ const CoffeeListItem = ({ price, name, description, volumeButtons, activeHeart, 
     }, [coffeeListItem])
 
 
-    const [hoverLeave, setHoverLeave] = useState(false);
+    const [hoverLeave, setHoverLeave] = useState(true);
     const [coffeeListItemClassfirst, setCoffeeListItemClassfirst] = useState('coffeeListItem');
 
 
